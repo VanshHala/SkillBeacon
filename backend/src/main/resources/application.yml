@@ -1,0 +1,54 @@
+spring:
+  application:
+    name: skillbeacon
+  datasource:
+    url: jdbc:postgresql://localhost:5432/skillbeacon
+    username: postgres
+    password: vansh
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://stirred-octopus-82.clerk.accounts.dev
+
+server:
+  port: 8080
+
+clerk:
+  publishable-key: pk_test_c3RpcnJlZC1vY3RvcHVzLTgyLmNsZXJrLmFjY291bnRzLmRldiQ
+  secret-key: sk_test_CLB6R159zPDtOUxr86KxXnVMuLgsu7HhAEGsxW42vq
+  jwks-url: https://stirred-octopus-82.clerk.accounts.dev/.well-known/jwks.json
+
+gemini:
+  api-key: AIzaSyBOgrZTN7k_fNaThwkWYj4VIT3OgBVDEtE
+  model: gemini-2.0-flash
+
+apify:
+  api-token: ""
+  base-url: https://api.apify.com/v2
+
+cors:
+  allowed-origins: http://localhost:5173
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      geminiService:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 30s
+      apifyService:
+        registerHealthIndicator: true
+        slidingWindowSize: 5
+        failureRateThreshold: 60
+        waitDurationInOpenState: 60s

@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Lexend', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f7f7f7;
+  color: #1e293b;
+}
+
+/* Glass-morphism utilities */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Hero gradient */
+.hero-gradient {
+  background: radial-gradient(circle at top right, rgba(27, 32, 33, 0.05), transparent),
+    radial-gradient(circle at bottom left, rgba(27, 32, 33, 0.02), transparent);
+}
+
+/* Mesh gradient for auth page */
+.mesh-gradient {
+  background-color: #1b2021;
+  background-image:
+    radial-gradient(at 0% 0%, hsla(0, 0%, 100%, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(0, 0%, 100%, 0.03) 0px, transparent 50%);
+}
+
+/* Soft gradient for dashboard */
+.soft-gradient {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(247, 247, 247, 1) 100%);
+}
+
+/* AI glow effect */
+.ai-glow {
+  box-shadow: 0 0 20px rgba(27, 32, 33, 0.05);
+}
+
+/* Cyber border focus effect */
+.cyber-border:focus-within {
+  border-color: #1b2021;
+  box-shadow: 0 0 0 2px rgba(27, 32, 33, 0.1);
+}
+
+/* Job card hover animation */
+.job-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.job-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom range slider styling */
+input[type='range'] {
+  -webkit-appearance: none;
+  background: transparent;
+  width: 100%;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  background: #e2e8f0;
+  border-radius: 2px;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #1b2021;
+  margin-top: -8px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Browser autofill fix - preserve rounded corners and styling */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: #1e293b !important;
+  border-radius: inherit !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Material Symbols fill utility */
+.fill-1 .material-symbols-outlined,
+.material-symbols-outlined.fill-1 {
+  font-variation-settings: 'FILL' 1;
+}
