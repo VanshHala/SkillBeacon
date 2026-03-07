@@ -25,15 +25,15 @@ server:
 
 clerk:
   publishable-key: pk_test_c3RpcnJlZC1vY3RvcHVzLTgyLmNsZXJrLmFjY291bnRzLmRldiQ
-  secret-key: sk_test_CLB6R159zPDtOUxr86KxXnVMuLgsu7HhAEGsxW42vq
+  secret-key: ${CLERK_SECRET_KEY:sk_test_placeholder}
   jwks-url: https://stirred-octopus-82.clerk.accounts.dev/.well-known/jwks.json
 
 gemini:
-  api-key: AIzaSyBOgrZTN7k_fNaThwkWYj4VIT3OgBVDEtE
+  api-key: ${GEMINI_API_KEY:placeholder}
   model: gemini-2.5-flash
 
 apify:
-  api-token: apify_api_qeXWydP6dggo8CXcTLKBbJxentqsVX1PdAoZ
+  api-token: ${APIFY_API_TOKEN:placeholder}
   base-url: https://api.apify.com/v2
 
 cors:
