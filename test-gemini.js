@@ -1,7 +1,7 @@
 const axios = require('axios');
 async function testGemini() {
     try {
-        const apiKey = "AIzaSyBOgrZTN7k_fNaThwkWYj4VIT3OgBVDEtE";
+        const apiKey = "";
         const model = "gemini-2.0-flash";
         const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
 
