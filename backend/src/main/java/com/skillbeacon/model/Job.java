@@ -7,7 +7,11 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "jobs")
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Job {
 
     @Id
@@ -23,8 +27,20 @@ public class Job {
     @Column(name = "location_city")
     private String locationCity;
 
+    @Column(name = "city_tier")
+    private String cityTier;
+
+    @Column(name = "normalized_category")
+    private String normalizedCategory;
+
     @Column(name = "skills_required", columnDefinition = "jsonb")
     private String skillsRequired;
+
+    @Column(name = "extracted_skills", columnDefinition = "jsonb")
+    private String extractedSkills;
+
+    @Column(name = "ai_tool_mentions", columnDefinition = "jsonb")
+    private String aiToolMentions;
 
     @Column(name = "experience_required")
     private String experienceRequired;
@@ -40,6 +56,9 @@ public class Job {
 
     @Column(name = "source_platform")
     private String sourcePlatform;
+
+    @Column(name = "job_url", unique = true)
+    private String jobUrl;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

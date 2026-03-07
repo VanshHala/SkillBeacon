@@ -23,12 +23,45 @@ export const dataApi = {
     getCourses: async (params) => {
         const response = await api.get('/data/courses', { params });
         return response.data;
+    },
+    getSimilarJobs: async (params) => {
+        const response = await api.get('/data/jobs/similar', { params });
+        return response.data;
+    },
+    suggestCities: async (q) => {
+        const response = await api.get('/data/suggestions/cities', { params: { q } });
+        return response.data;
+    },
+    suggestTitles: async (q) => {
+        const response = await api.get('/data/suggestions/titles', { params: { q } });
+        return response.data;
     }
 };
 
 export const dashboardApi = {
     getMetrics: async () => {
         const response = await api.get('/dashboard/metrics');
+        return response.data;
+    }
+};
+
+export const analyticsApi = {
+    getHiringTrends: async (days = 30, category = '', city = '', sector = '') => {
+        const params = { days };
+        if (category) params.category = category;
+        if (city) params.city = city;
+        if (sector) params.sector = sector;
+        const response = await api.get('/analytics/hiring-trends', { params });
+        return response.data;
+    },
+    getSkillsIntelligence: async () => {
+        const response = await api.get('/analytics/skills-intelligence');
+        return response.data;
+    },
+    getAIVulnerability: async (city = '') => {
+        const params = {};
+        if (city) params.city = city;
+        const response = await api.get('/analytics/ai-vulnerability', { params });
         return response.data;
     }
 };
@@ -40,6 +73,17 @@ export const workerApi = {
     },
     chat: async (message) => {
         const response = await api.post('/worker/chat', { message });
+        return response.data;
+    },
+    getDynamicRiskScore: async (payload) => {
+        const response = await api.post('/worker/risk-score', payload);
+        return response.data;
+    }
+};
+
+export const marketApi = {
+    syncLive: async (payload) => {
+        const response = await api.post('/v1/market/sync-live', payload);
         return response.data;
     }
 };

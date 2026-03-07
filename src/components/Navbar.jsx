@@ -4,9 +4,7 @@ import { useState } from 'react'
 const navLinks = [
     { label: 'Dashboard', path: '/dashboard' },
     { label: 'Market', path: '/jobs' },
-    { label: 'Insights', path: '/report' },
     { label: 'Courses', path: '/courses' },
-    { label: 'Analysis', path: '/analysis' },
 ]
 
 export default function Navbar() {

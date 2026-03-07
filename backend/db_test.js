@@ -1,0 +1,1 @@
+const { Pool } = require('pg'); const pool = new Pool({ user: 'postgres', host: 'localhost', database: 'skillbeacon', password: 'vansh', port: 5432 }); pool.query('SELECT source_platform, COUNT(job_url) FROM jobs GROUP BY source_platform', (err, res) => { console.log(err ? err.stack : res.rows); pool.end(); });

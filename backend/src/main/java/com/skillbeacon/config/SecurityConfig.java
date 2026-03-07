@@ -35,7 +35,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/public/**", "/api/health").permitAll()
+                        .requestMatchers("/api/public/**", "/api/health", "/api/v1/market/sync-live").permitAll()
                         .requestMatchers("/api/**").authenticated()
                         .anyRequest().permitAll())
                 .addFilterBefore(clerkJwtFilter, UsernamePasswordAuthenticationFilter.class);

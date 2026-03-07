@@ -1,0 +1,1 @@
+const url = 'https://api.apify.com/v2/acts/bebity~linkedin-jobs-scraper/runs?token=apify_api_qeXWydP6dggo8CXcTLKBbJxentqsVX1PdAoZ'; const args = {title: 'Software Engineer', location: 'Indore, India', rows: 5}; fetch(url, {method: 'POST', body: JSON.stringify(args), headers: {'Content-Type': 'application/json'}}).then(r => r.json().then(j => console.log(j)));

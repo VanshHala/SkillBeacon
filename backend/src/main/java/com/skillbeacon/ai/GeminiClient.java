@@ -36,10 +36,10 @@ public class GeminiClient {
     public String generateContent(String systemPrompt, String userPrompt) {
         log.info("Calling Gemini API with model {}", model);
         try {
+            String combinedPrompt = systemPrompt + "\n\nUser Question:\n" + userPrompt;
             String requestBody = objectMapper.writeValueAsString(Map.of(
                     "contents", new Object[] {
-                            Map.of("role", "model", "parts", new Object[] { Map.of("text", systemPrompt) }),
-                            Map.of("role", "user", "parts", new Object[] { Map.of("text", userPrompt) })
+                            Map.of("role", "user", "parts", new Object[] { Map.of("text", combinedPrompt) })
                     }));
 
             String response = webClient.post()

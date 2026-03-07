@@ -14,11 +14,15 @@
     "axios": "^1.13.6",
     "d3-geo": "^3.1.1",
     "framer-motion": "^11.0.0",
+    "lucide-react": "^0.577.0",
+    "pg": "^8.20.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.0",
     "react-simple-maps": "^3.0.0",
-    "recharts": "^3.7.0"
+    "recharts": "^3.7.0",
+    "three": "^0.183.2",
+    "vanta": "^0.5.24"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",

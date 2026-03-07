@@ -1,0 +1,1 @@
+const { Pool } = require('pg'); const pool = new Pool({ user: 'postgres', host: 'localhost', database: 'skillbeacon', password: 'vansh', port: 5432 }); pool.query('DELETE FROM jobs WHERE source_platform = ''LinkedIn (Live Sync)''', (err, res) => { console.log('Rows deleted:', res ? res.rowCount : err); pool.end(); });

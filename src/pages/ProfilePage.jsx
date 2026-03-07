@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { useUser, useClerk } from '@clerk/clerk-react'
-import { userApi } from '../services/api'
+import { useUser, useClerk, useAuth } from '@clerk/clerk-react'
+import { userApi, setAuthToken } from '../services/api'
 import Navbar from '../components/Navbar'
 
 const fadeUp = {
@@ -12,6 +12,7 @@ const fadeUp = {
 
 export default function ProfilePage() {
     const { user, isLoaded, isSignedIn } = useUser()
+    const { getToken } = useAuth()
     const { signOut } = useClerk()
     const [isSyncing, setIsSyncing] = useState(false)
     const [syncSuccess, setSyncSuccess] = useState(false)
@@ -25,6 +26,9 @@ export default function ProfilePage() {
     const syncUserData = async (clerkUser) => {
         setIsSyncing(true)
         try {
+            const token = await getToken()
+            setAuthToken(token)
+
             const authProviders = clerkUser.externalAccounts
                 .map(acc => acc.provider)
                 .join(',')

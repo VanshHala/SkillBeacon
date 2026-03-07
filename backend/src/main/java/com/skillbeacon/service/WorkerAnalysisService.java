@@ -57,7 +57,8 @@ public class WorkerAnalysisService {
 
         // 2. Risk Calculation
         double riskScoreValue = riskAnalysisService.calculateRiskScore(request.getJobTitle(),
-                request.getYearsOfExperience(), combinedSkills);
+                request.getCity(),
+                request.getYearsOfExperience(), request.getWorkDescription(), combinedSkills);
         String riskLevel = riskAnalysisService.determineRiskLevel(riskScoreValue);
 
         // 3. Ask Gemini for Roadmap and Recommendations using a JSON schema prompt

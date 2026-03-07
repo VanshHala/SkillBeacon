@@ -2,7 +2,7 @@ spring:
   application:
     name: skillbeacon
   datasource:
-    url: jdbc:postgresql://localhost:5432/skillbeacon
+    url: jdbc:postgresql://localhost:5432/skillbeacon?stringtype=unspecified
     username: postgres
     password: vansh
     driver-class-name: org.postgresql.Driver
@@ -30,14 +30,14 @@ clerk:
 
 gemini:
   api-key: AIzaSyBOgrZTN7k_fNaThwkWYj4VIT3OgBVDEtE
-  model: gemini-2.0-flash
+  model: gemini-2.5-flash
 
 apify:
-  api-token: ""
+  api-token: apify_api_qeXWydP6dggo8CXcTLKBbJxentqsVX1PdAoZ
   base-url: https://api.apify.com/v2
 
 cors:
-  allowed-origins: http://localhost:5173
+  allowed-origins: http://localhost:5173,http://localhost:5174
 
 resilience4j:
   circuitbreaker:
