@@ -1,10 +1,10 @@
 const { Pool } = require('pg');
 const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'skillbeacon',
-    password: 'vansh',
-    port: 5432
+    user: process.env.DATABASE_USERNAME || 'postgres',
+    host: process.env.DATABASE_HOST || 'localhost',
+    database: process.env.DATABASE_NAME || 'skillbeacon',
+    password: process.env.DATABASE_PASSWORD || '',
+    port: parseInt(process.env.DATABASE_PORT || '5432')
 });
 
 pool.query("DELETE FROM jobs WHERE source_platform LIKE 'LinkedIn%';", (err, res) => {

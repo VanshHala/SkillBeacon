@@ -2,21 +2,19 @@ const { Client } = require('pg');
 
 async function fixDoubleSerializedJsonb() {
     const client = new Client({
-        user: 'postgres',
-        host: 'localhost',
-        database: 'skillbeacon',
-        password: 'vansh',
-        port: 5432,
+        user: process.env.DATABASE_USERNAME || 'postgres',
+        host: process.env.DATABASE_HOST || 'localhost',
+        database: process.env.DATABASE_NAME || 'skillbeacon',
+        password: process.env.DATABASE_PASSWORD || '',
+        port: parseInt(process.env.DATABASE_PORT || '5432'),
     });
 
     try {
         await client.connect();
 
-        // Find double-serialized rows: stored as a JSON string (starts with '"')
-        // e.g. "\"[\\\"Problem Solving\\\",\\\"Python\\\"]\"" instead of ["Problem Solving","Python"]
         const result = await client.query(`
       SELECT id, skills_required::text as sr FROM jobs 
-      WHERE skills_required::text LIKE '"%' OR skills_required::text LIKE E'"\\\\"'
+      WHERE skills_required::text LIKE '"%' OR skills_required::text LIKE E'"\\\\\"'
     `);
 
         console.log(`Found ${result.rows.length} potentially double-serialized rows.`);
@@ -24,10 +22,8 @@ async function fixDoubleSerializedJsonb() {
         let fixedCount = 0;
         for (const row of result.rows) {
             let raw = row.sr;
-            // Try to unwrap: if it's a JSON string containing a JSON array
             try {
                 let parsed = JSON.parse(raw);
-                // If parsed is a string, parse again
                 while (typeof parsed === 'string') {
                     parsed = JSON.parse(parsed);
                 }
@@ -37,7 +33,6 @@ async function fixDoubleSerializedJsonb() {
                     fixedCount++;
                 }
             } catch (e) {
-                // If all parsing fails, just reset to empty array
                 await client.query(`UPDATE jobs SET skills_required = '[]'::jsonb WHERE id = $1`, [row.id]);
                 fixedCount++;
             }
@@ -45,7 +40,6 @@ async function fixDoubleSerializedJsonb() {
 
         console.log(`Fixed ${fixedCount} double-serialized rows.`);
 
-        // Verify the top skills query works
         try {
             const skills = await client.query(`
         SELECT skill, COUNT(*) as cnt

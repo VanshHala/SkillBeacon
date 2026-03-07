@@ -3,11 +3,11 @@ const fs = require('fs');
 
 async function run() {
     const client = new Client({
-        user: 'postgres',
-        host: 'localhost',
-        database: 'skillbeacon',
-        password: 'vansh',
-        port: 5432,
+        user: process.env.DATABASE_USERNAME || 'postgres',
+        host: process.env.DATABASE_HOST || 'localhost',
+        database: process.env.DATABASE_NAME || 'skillbeacon',
+        password: process.env.DATABASE_PASSWORD || '',
+        port: parseInt(process.env.DATABASE_PORT || '5432'),
     });
 
     try {
@@ -22,7 +22,6 @@ async function run() {
             try {
                 const city = item.location ? item.location.split(',')[0].trim() : 'Remote';
 
-                // Mocking some skills since raw LinkedIn listings usually have them embedded in the text
                 const mockSkills = ['Communication', 'Teamwork', 'Problem Solving'];
                 if (item.title.toLowerCase().includes('engineer') || item.title.toLowerCase().includes('developer')) {
                     mockSkills.push('JavaScript', 'Python', 'React', 'Java');

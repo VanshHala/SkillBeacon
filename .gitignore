@@ -3,3 +3,27 @@ node_modules/
 dist/
 backend/target/
 
+# Environment files (contain secrets)
+.env
+.env.local
+.env.*.local
+.env.production
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Logs
+*.log
+build.log
+build_error.log
+build_out.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large data files
+apify_data.json
+live_apify_data.json
