@@ -19,10 +19,9 @@ This guide provides step-by-step instructions to host the SkillBeacon applicatio
 3. Connect your GitHub account and select the `SkillBeacon` repository.
 4. Define the following deployment configurations:
    - Name: `skillbeacon-backend`
-   - Language: `Java`
+   - Language: `Docker` (Render automatically detects the Dockerfile in the backend folder)
    - Root Directory: `backend`
-   - Build Command: `./mvnw clean package -DskipTests` (If the maven wrapper is missing, use `mvn clean package -DskipTests`)
-   - Start Command: `java -jar target/*.jar`
+   - Docker Command: `(Leave blank, it will build automatically)`
 5. Scroll down to "Environment Variables" and click "Add Environment Variable". Add the following:
    - `SPRING_DATASOURCE_URL`: The JDBC connection string from Supabase. (Ensure it starts with `jdbc:postgresql://`).
    - `SPRING_DATASOURCE_USERNAME`: `postgres` (or your Supabase DB username).
