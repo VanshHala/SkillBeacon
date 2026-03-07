@@ -7,10 +7,10 @@ This guide provides step-by-step instructions to host the SkillBeacon applicatio
 1. Navigate to Supabase (supabase.com) and create a new project.
 2. Store the database password securely during creation.
 3. Wait for the database to provision.
-4. Go to the "SQL Editor" tab on the left sidebar.
-5. Paste your local PostgreSQL schema (tables for Jobs, Users, etc.) and execute it to create the tables.
-6. Go to "Project Settings" -> "Database". 
-7. Scroll down to "Connection Parameters" and copy the "URI" or "JDBC Connection String". You will need this for the backend.
+4. Go to "Project Settings" -> "Database" in the left sidebar.
+5. Scroll down to "Connection Parameters" and copy the "URI" or "JDBC Connection String". You will need this for the backend.
+
+*(Note: You do not need to manually create any tables. When the Spring Boot backend starts up, Hibernate will automatically generate all required tables because `ddl-auto` is set to `update`!)*
 
 ## Step 2: Backend Deployment on Render
 
@@ -19,8 +19,8 @@ This guide provides step-by-step instructions to host the SkillBeacon applicatio
 3. Connect your GitHub account and select the `SkillBeacon` repository.
 4. Define the following deployment configurations:
    - Name: `skillbeacon-backend`
-   - Language: `Docker` (Render automatically detects the Dockerfile in the backend folder)
-   - Root Directory: `backend`
+   - Language: `Docker` (Render automatically detects the `Dockerfile` at the root of the repo)
+   - Root Directory: `(Leave blank)`
    - Docker Command: `(Leave blank, it will build automatically)`
 5. Scroll down to "Environment Variables" and click "Add Environment Variable". Add the following:
    - `SPRING_DATASOURCE_URL`: The JDBC connection string from Supabase. (Ensure it starts with `jdbc:postgresql://`).
