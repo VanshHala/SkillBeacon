@@ -2,7 +2,7 @@ import axios from 'axios';
 
 async function testGemini(modelName) {
     try {
-        const apiKey = "AIzaSyBOgrZTN7k_fNaThwkWYj4VIT3OgBVDEtE";
+        const apiKey = "";
         const url = `https://generativelanguage.googleapis.com/v1beta/${modelName}:generateContent?key=${apiKey}`;
 
         const response = await axios.post(url, {
