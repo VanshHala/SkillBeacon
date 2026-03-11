@@ -121,15 +121,15 @@ export default function AuthPage() {
             if (!isLoadedSignIn) return;
             await signIn.authenticateWithRedirect({
                 strategy,
-                redirectUrl: "/sso-callback",
-                redirectUrlComplete: "/dashboard"
+                redirectUrl: `${window.location.origin}/sso-callback`,
+                redirectUrlComplete: `${window.location.origin}/dashboard`
             })
         } else {
             if (!isLoadedSignUp) return;
             await signUp.authenticateWithRedirect({
                 strategy,
-                redirectUrl: "/sso-callback",
-                redirectUrlComplete: "/dashboard"
+                redirectUrl: `${window.location.origin}/sso-callback`,
+                redirectUrlComplete: `${window.location.origin}/dashboard`
             })
         }
     }
