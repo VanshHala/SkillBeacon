@@ -14,11 +14,9 @@ export default function AuthPage() {
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
 
-    // For SignUp OTP verification
     const [pendingVerification, setPendingVerification] = useState(false)
     const [code, setCode] = useState('')
 
-    // For Forgot Password flow
     const [isForgotPassword, setIsForgotPassword] = useState(false)
     const [pendingResetCode, setPendingResetCode] = useState(false)
     const [resetCode, setResetCode] = useState('')
@@ -187,7 +185,6 @@ export default function AuthPage() {
                 <style>{`.glass-morphism { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.5); } .cyber-border:focus-within { border-color: #1b2021; box-shadow: 0 0 0 2px rgba(27, 32, 33, 0.1); }`}</style>
 
                 <div className="flex min-h-screen w-full">
-                    {/* Left Side: Vanta.js Network Animation */}
                     <div ref={vantaRef} className="hidden lg:flex lg:w-1/2 relative overflow-hidden items-center justify-center">
                         <div className="relative z-10 px-12 text-white">
                             <Link to="/" className="flex items-center gap-3 mb-8 hover:opacity-80 transition-opacity">
@@ -199,14 +196,11 @@ export default function AuthPage() {
                             <h2 className="text-6xl font-extrabold leading-tight mb-6">Illuminate Your <br /><span className="">Professional</span> Path.</h2>
                             <p className="text-xl text-slate-300 max-w-md font-light">Join the global network of experts and accelerate your career with AI-driven insights.</p>
                         </div>
-                        {/* Decorative Elements */}
                         <div className="absolute bottom-10 left-10 w-32 h-32 border border-white/10 rounded-full"></div>
                         <div className="absolute top-20 right-20 w-64 h-64 border border-white/5 rounded-full"></div>
                     </div>
 
-                    {/* Right Side: Auth Form */}
                     <div className="w-full lg:w-1/2 flex flex-col items-center justify-center p-6 sm:p-12 relative bg-white/50 overflow-y-auto">
-                        {/* Return to Home link for larger screens */}
                         <div className="absolute top-8 right-8 hidden lg:block z-20">
                             <Link to="/" className="text-sm font-semibold text-slate-400 hover:text-primary transition-colors flex items-center gap-2">
                                 <span className="material-symbols-outlined text-[18px]">arrow_back</span>
@@ -214,13 +208,11 @@ export default function AuthPage() {
                             </Link>
                         </div>
 
-                        {/* Mobile Logo */}
                         <Link to="/" className="lg:hidden absolute top-8 left-8 flex items-center gap-2 z-20">
                             <span className="material-symbols-outlined text-2xl text-primary bg-primary/10 rounded-md p-1">hub</span>
                             <span className="text-xl font-bold tracking-tight text-slate-900">SkillBeacon</span>
                         </Link>
 
-                        {/* Glass-morphic Card */}
                         <div className="w-full max-w-md glass-morphism rounded-xl p-8 shadow-2xl border border-slate-200/50 mt-16 lg:mt-0 relative z-10">
                             <div className="mb-8">
                                 <h2 className="text-3xl font-bold text-slate-900">
@@ -368,7 +360,6 @@ export default function AuthPage() {
                                 </form>
                             ) : (
                                 <>
-                                    {/* Toggle Switches */}
                                     <div className="flex gap-4 mb-8">
                                         <button
                                             onClick={() => { setIsLogin(true); setError(''); }}
@@ -478,16 +469,12 @@ export default function AuthPage() {
                             )}
                         </div>
                     </div>
-
-                    {/* Footer links */}
                     <div className="absolute bottom-6 w-full lg:w-1/2 right-0 flex justify-center gap-6 text-xs font-medium text-slate-400 z-10">
                         <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
                         <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
                         <a href="#" className="hover:text-primary transition-colors">Help Center</a>
                     </div>
                 </div>
-
-                {/* AI Chatbot FAB */}
                 <div className="fixed bottom-8 right-8 z-50 group">
                     <div className="absolute -top-12 right-0 bg-primary text-white px-3 py-1 rounded-lg text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
                         Need help? Ask Beacon AI

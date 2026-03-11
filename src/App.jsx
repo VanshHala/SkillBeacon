@@ -14,7 +14,6 @@ import CoursesExplorerPage from './pages/CoursesExplorerPage'
 import ProfilePage from './pages/ProfilePage'
 import OnboardingPage from './pages/OnboardingPage'
 
-// Helper component to keep Axios token fresh
 function ApiTokenHandler() {
     const { getToken } = useAuth()
 
