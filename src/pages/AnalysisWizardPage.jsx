@@ -57,11 +57,10 @@ export default function AnalysisWizardPage() {
         if (!jobTitle) { alert('Please enter your current job title.'); return; }
         analyzeMutation.mutate({
             jobTitle,
-            targetLocation: location || 'Global',
+            city: location || '',
             yearsOfExperience: parseInt(experience, 10),
             currentSkills: skills,
-            professionalSummary: summary,
-            industry: 'Technology' // Default for now
+            workDescription: summary
         })
     }
 

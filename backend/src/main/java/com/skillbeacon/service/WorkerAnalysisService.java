@@ -114,6 +114,24 @@ public class WorkerAnalysisService {
             response.setRecommendedCourses(List.of());
         }
 
+        // Set extracted skills
+        response.setExtractedSkills(combinedSkills);
+
+        // Build human-readable roadmap string
+        if (response.getReskillingRoadmap() != null && !response.getReskillingRoadmap().isEmpty()) {
+            StringBuilder roadmapText = new StringBuilder();
+            for (Map<String, Object> step : response.getReskillingRoadmap()) {
+                String week = step.getOrDefault("week", "").toString();
+                String focus = step.getOrDefault("focus", "").toString();
+                String desc = step.getOrDefault("description", "").toString();
+                roadmapText.append("Week ").append(week).append(": ").append(focus)
+                        .append("\n").append(desc).append("\n\n");
+            }
+            response.setCareerRoadmapStr(roadmapText.toString().trim());
+        } else {
+            response.setCareerRoadmapStr("No roadmap generated. Please try again.");
+        }
+
         // 4. Save to Database
         try {
             WorkerProfile profile = WorkerProfile.builder()

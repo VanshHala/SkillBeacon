@@ -275,6 +275,18 @@ public class ChatbotService {
                 "- Format responses with bullet points and sections using markdown.\n" +
                 "- **CRITICAL LENGTH CONSTRAINT:** Keep your responses balanced (medium length). Do not give overly long essay-style answers. Avoid overly brief one-line answers. Stick strictly to 1-3 short paragraphs or a few bullet points at most.\n\n"
                 +
+<<<<<<< Updated upstream
+=======
+                "**CRITICAL DATA ACCURACY RULES:**\n" +
+                "1. When citing job counts, statistics, or numbers, you MUST use ONLY the exact numbers provided in the CONTEXT section below. NEVER estimate, approximate, round, or invent numbers.\n"
+                +
+                "2. If the CONTEXT does not contain data to answer a question (e.g., a city or category not listed), say 'Based on our current database, I don't have specific data for that.' instead of guessing.\n"
+                +
+                "3. Always prefix data-backed claims with 'According to our live database' or 'Our data shows' to make it clear.\n"
+                +
+                "4. NEVER fabricate job titles, company names, salary figures, or statistics that are not in the CONTEXT.\n\n"
+                +
+>>>>>>> Stashed changes
                 "MULTILINGUAL RULE: Detect the user's input language and ALWAYS respond in that SAME language. " +
                 "If user writes in Hindi, respond in Hindi. If in Gujarati, respond in Gujarati. If in English, respond in English.\n\n"
                 +

@@ -28,7 +28,7 @@ export default function AIReportPage() {
     if (loading) return null
     if (!report) return <Navigate to="/analysis" replace />
 
-    const riskScore = parseFloat(report.overallRiskScore || 0).toFixed(1)
+    const riskScore = parseFloat(report.riskScore || 0).toFixed(1)
 
     // Evaluate risk gauge color
     let riskColor = 'slate'
@@ -105,6 +105,51 @@ export default function AIReportPage() {
                     </motion.div>
                 </div>
 
+                {/* Safer Roles & Skills */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {/* Safer Roles */}
+                    <motion.div {...fadeUp} className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+                        <div className="flex items-center gap-2 mb-4">
+                            <span className="material-symbols-outlined p-2 bg-emerald-50 text-emerald-600 rounded-lg">shield</span>
+                            <h3 className="font-bold text-primary">Safer Roles</h3>
+                        </div>
+                        <div className="space-y-2">
+                            {report.saferRoles?.length > 0 ? report.saferRoles.map((role, i) => (
+                                <div key={i} className="flex items-center gap-2 p-2 bg-emerald-50/50 rounded-lg">
+                                    <span className="material-symbols-outlined text-emerald-500 text-sm">check_circle</span>
+                                    <span className="text-sm font-medium text-slate-700">{role}</span>
+                                </div>
+                            )) : <p className="text-slate-400 text-sm italic">Not available</p>}
+                        </div>
+                    </motion.div>
+
+                    {/* Recommended Skills */}
+                    <motion.div {...fadeUp} className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+                        <div className="flex items-center gap-2 mb-4">
+                            <span className="material-symbols-outlined p-2 bg-blue-50 text-blue-600 rounded-lg">trending_up</span>
+                            <h3 className="font-bold text-primary">Recommended Skills</h3>
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                            {report.recommendedSkills?.length > 0 ? report.recommendedSkills.map((skill, i) => (
+                                <span key={i} className="px-3 py-1.5 bg-blue-50 text-blue-700 text-xs font-bold rounded-full">{skill}</span>
+                            )) : <p className="text-slate-400 text-sm italic">Not available</p>}
+                        </div>
+                    </motion.div>
+
+                    {/* Missing Skills */}
+                    <motion.div {...fadeUp} className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+                        <div className="flex items-center gap-2 mb-4">
+                            <span className="material-symbols-outlined p-2 bg-amber-50 text-amber-600 rounded-lg">warning</span>
+                            <h3 className="font-bold text-primary">Skill Gaps</h3>
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                            {report.missingSkills?.length > 0 ? report.missingSkills.map((skill, i) => (
+                                <span key={i} className="px-3 py-1.5 bg-amber-50 text-amber-700 text-xs font-bold rounded-full">{skill}</span>
+                            )) : <p className="text-slate-400 text-sm italic">No gaps identified</p>}
+                        </div>
+                    </motion.div>
+                </div>
+
                 {/* Main Content Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-1 gap-8">
                     {/* Career Evolution Roadmap */}
@@ -114,10 +159,8 @@ export default function AIReportPage() {
                                 <span className="material-symbols-outlined text-blue-500">auto_awesome</span>
                                 Gemini Generated Career Roadmap
                             </h3>
-                            <button className="text-xs bg-slate-100 text-slate-500 hover:text-primary transition-colors px-3 py-1 rounded-full font-bold">Copy Text</button>
                         </div>
                         <div className="p-8 prose prose-slate max-w-none text-slate-700 leading-relaxed font-medium">
-                            {/* Simple Markdown Renderer Approximation since we didn't add react-markdown to dependencies implicitly */}
                             {report.careerRoadmapStr ? (
                                 <div className="space-y-4 whitespace-pre-wrap">
                                     {report.careerRoadmapStr}
@@ -127,6 +170,33 @@ export default function AIReportPage() {
                             )}
                         </div>
                     </motion.section>
+
+                    {/* Recommended Courses */}
+                    {report.recommendedCourses?.length > 0 && (
+                        <motion.section {...fadeUp} className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+                            <div className="p-6 border-b border-slate-100">
+                                <h3 className="text-primary font-bold text-lg flex items-center gap-2">
+                                    <span className="material-symbols-outlined text-emerald-500">school</span>
+                                    Recommended Courses
+                                </h3>
+                            </div>
+                            <div className="p-6 space-y-3">
+                                {report.recommendedCourses.map((course, i) => (
+                                    <div key={i} className="flex items-center justify-between p-4 bg-slate-50 rounded-xl border border-slate-100 hover:border-primary/20 transition-all">
+                                        <div>
+                                            <p className="font-bold text-sm text-slate-800">{course.title}</p>
+                                            <p className="text-xs text-slate-500 mt-0.5">{course.platform}</p>
+                                        </div>
+                                        {course.url && course.url !== '#' && (
+                                            <a href={course.url} target="_blank" rel="noopener noreferrer" className="text-primary text-xs font-bold hover:underline flex items-center gap-1">
+                                                View <span className="material-symbols-outlined text-xs">open_in_new</span>
+                                            </a>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </motion.section>
+                    )}
                 </div>
 
                 {/* Final CTA */}
