@@ -1,0 +1,53 @@
+spring:
+  application:
+    name: skillbeacon
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/skillbeacon?stringtype=unspecified}
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:vansh}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${CLERK_ISSUER_URI:https://stirred-octopus-82.clerk.accounts.dev}
+
+server:
+  port: ${PORT:8080}
+
+clerk:
+  publishable-key: ${CLERK_PUBLISHABLE_KEY:}
+  secret-key: ${CLERK_SECRET_KEY:}
+  jwks-url: ${CLERK_JWKS_URL:https://stirred-octopus-82.clerk.accounts.dev/.well-known/jwks.json}
+
+gemini:
+  api-key: ${GEMINI_API_KEY:}
+  model: ${GEMINI_MODEL:gemini-2.5-flash}
+
+apify:
+  api-token: ${APIFY_API_TOKEN:}
+  base-url: ${APIFY_BASE_URL:https://api.apify.com/v2}
+
+cors:
+  allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173,http://localhost:5174}
+resilience4j:
+  circuitbreaker:
+    instances:
+      geminiService:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 30s
+      apifyService:
+        registerHealthIndicator: true
+        slidingWindowSize: 5
+        failureRateThreshold: 60
+        waitDurationInOpenState: 60s

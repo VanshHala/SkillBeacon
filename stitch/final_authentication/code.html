@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>final_authentication</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#1b2021",
+                "accent": "#64748b",
+                "background-light": "#ffffff",
+                "background-dark": "#121212",
+              },
+              fontFamily: {
+                "display": ["Lexend", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        .mesh-gradient {
+            background-color: #1b2021;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(0, 0%, 100%, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, hsla(0, 0%, 100%, 0.03) 0px, transparent 50%);
+        }
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .cyber-border:focus-within {
+            border-color: #1b2021;
+            box-shadow: 0 0 0 2px rgba(27, 32, 33, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased overflow-hidden">
+<div class="flex h-screen w-full">
+<!-- Left Side: Abstract 3D Visualization -->
+<div class="hidden lg:flex lg:w-1/2 relative overflow-hidden mesh-gradient items-center justify-center">
+<div class="absolute inset-0 opacity-40" data-alt="Abstract 3D glowing cyber mesh visualization" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB3RcH7049ryhJd5WEyw6Dh-a8nHJwuRQF1RL2lFowkziF-Lr_XhznSeLHUnfscZeYBJ0iiBIAZH77xTqDdnvZKQpYVrKxxpUgBVtyun9KJC5myDXcpv-D_auI9hP9mPuCsMmw9Duu0utfkUFZLy-qjc6RYtdkZ-wPX-Gx456iZkii11lHnuJ4OmdkyD10jr53SGdFNBlm7qMX9RbmqN_lqqOVCNW029499rIuV4mQu0F7ZUxtdLO2Lp7K4PrjIp2hmmTLtzMe3D4U"); background-size: cover; background-position: center;'></div>
+<div class="relative z-10 px-12 text-white">
+<div class="flex items-center gap-3 mb-8">
+<div class="p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl font-bold">hub</span>
+</div>
+<h1 class="text-4xl font-black tracking-tight uppercase">SkillBeacon</h1>
+</div>
+<h2 class="text-6xl font-extrabold leading-tight mb-6">Illuminate Your <br/><span class="">Professional</span> Path.</h2>
+<p class="text-xl text-slate-300 max-w-md font-light">Join the global network of experts and accelerate your career with AI-driven insights.</p>
+</div>
+<!-- Decorative Elements -->
+<div class="absolute bottom-10 left-10 w-32 h-32 border border-white/10 rounded-full"></div>
+<div class="absolute top-20 right-20 w-64 h-64 border border-white/5 rounded-full"></div>
+</div>
+<!-- Right Side: Auth Form -->
+<div class="w-full lg:w-1/2 flex flex-col items-center justify-center p-6 sm:p-12 relative bg-white/50">
+<!-- Mobile Logo -->
+<div class="lg:hidden absolute top-8 left-8 flex items-center gap-2">
+<span class="material-symbols-outlined text-2xl">hub</span>
+<span class="text-xl font-bold tracking-tight">SkillBeacon</span>
+</div>
+<!-- Glass-morphic Card -->
+<div class="w-full max-w-md glass-morphism rounded-xl p-8 shadow-2xl border border-slate-200/50">
+<div class="mb-8">
+<h2 class="text-3xl font-bold text-slate-900">Welcome Back</h2>
+<p class="text-slate-500 mt-2">Sign in to access your professional dashboard.</p>
+</div>
+<div class="flex gap-4 mb-8">
+<button class="flex-1 py-3 px-4 rounded-lg bg-primary text-white font-semibold flex items-center justify-center gap-2 hover:bg-slate-800 transition-all hover:shadow-primary/20">
+                        Login
+                    </button>
+<button class="flex-1 py-3 px-4 rounded-lg bg-slate-100 text-slate-600 font-semibold flex items-center justify-center gap-2 hover:bg-slate-200 transition-all">
+                        Sign Up
+                    </button>
+</div>
+<form class="space-y-5">
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-700 ml-1">Email Address</label>
+<div class="relative group cyber-border border-2 border-slate-100 rounded-xl transition-all duration-300">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">mail</span>
+<input class="w-full bg-transparent border-none py-4 pl-12 pr-4 focus:ring-0 text-slate-900 placeholder:text-slate-400" placeholder="name@company.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center px-1">
+<label class="text-sm font-semibold text-slate-700">Password</label>
+<a class="text-xs font-bold hover:underline" href="#">Forgot?</a>
+</div>
+<div class="relative group cyber-border border-2 border-slate-100 rounded-xl transition-all duration-300">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">lock</span>
+<input class="w-full bg-transparent border-none py-4 pl-12 pr-12 focus:ring-0 text-slate-900 placeholder:text-slate-400" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600" type="button">
+<span class="material-symbols-outlined text-sm">visibility</span>
+</button>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:shadow-lg active:scale-[0.98] transition-all hover:shadow-primary/20" type="submit">
+                        Sign In
+                    </button>
+</form>
+<div class="relative my-8">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-slate-200"></div>
+</div>
+<div class="relative flex justify-center text-sm uppercase">
+<span class="bg-white/0 px-4 text-slate-500 font-medium">Or continue with</span>
+</div>
+</div>
+<button class="w-full flex items-center justify-center gap-3 py-4 rounded-xl border-2 border-slate-100 bg-white hover:bg-slate-50 transition-all font-semibold text-slate-700">
+<img alt="Google Logo" class="w-5 h-5" data-alt="Google colorful G logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChZqxNRKLCU1_CGvKioLmu5BcPG-oiBwbX2VCJldFv6fj6h_hy-jZfgCxGcp81zBZgEeZBXTxIX4X1c5g3PmyT3nLPVvQrpcrdxVZeBYDVU_GsBDnk7fziaMwrFndVutv8fGaBXh9oGRkrUNULLHe9R0pmJqhzXjum0kkRHO-DbjjUQmgaAS8VsbCY5Ds_ZDKxdhnK3AkadceHgM3wmhtjlXNsAS9PyRQPGvKN8UbJ9QBBI4SfCRRjJkJZrWctf6zmu2e1VkkChj8"/>
+                    Google Account
+                </button>
+<p class="mt-8 text-center text-sm text-slate-500">
+                    Don't have an account? 
+                    <a class="text-primary font-bold transition-colors hover:underline" href="#">Request early access</a>
+</p>
+</div>
+<!-- Footer links -->
+<div class="mt-12 flex gap-6 text-xs font-medium text-slate-400">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Help Center</a>
+</div>
+</div>
+</div>
+<!-- AI Chatbot FAB -->
+<div class="fixed bottom-8 right-8 z-50 group">
+<div class="absolute -top-12 right-0 bg-primary text-white px-3 py-1 rounded-lg text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+            Need help? Ask Beacon AI
+        </div>
+<button class="w-16 h-16 rounded-full bg-primary flex items-center justify-center shadow-xl border-2 hover:scale-110 active:scale-95 transition-all hover:shadow-primary/20 border-white/20">
+<span class="material-symbols-outlined text-white text-3xl">smart_toy</span>
+</button>
+</div>
+</body></html>
